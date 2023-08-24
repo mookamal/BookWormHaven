@@ -39,14 +39,26 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     # Third-party
     "crispy_forms",
     "crispy_bootstrap5",
+    "allauth.account",
     # my apps
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
 ]
 
+# django-allauth config
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # this to use my custom model
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -87,9 +99,9 @@ WSGI_APPLICATION = "bookstore_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
