@@ -8,6 +8,7 @@ django = "*"
 psycopg2-binary = "*"
 crispy-bootstrap5 = "*"
 django-allauth = "*"
+django-environ = "*"
 
 [dev-packages]
 
